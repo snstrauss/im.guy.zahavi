@@ -2,19 +2,11 @@
   "version": 3,
   "file": "bundle.css",
   "sources": [
-    "../../App.svelte",
-    "../../about.svelte",
-    "../../contact.svelte",
-    "../../home.svelte",
-    "../../notFound.svelte"
+    "../../App.svelte"
   ],
   "sourcesContent": [
-    "<script>\n    import page from 'page';\n\timport Contact from \"./pages/contact.svelte\";\n\timport About from \"./pages/about.svelte\";\n    import Home from \"./pages/home.svelte\";\n\timport NotFound from \"./pages/notFound.svelte\";\n\n    let currentPage,params;\n\n    const routes = {\n        Home,\n        About,\n        Contact,\n        NotFound\n    };\n\n    page('/*', setParams, setPage);\n\n    function setParams(context, next){\n\n        params = context.params;\n\n        debugger;\n\n        next();\n    }\n\n    function setPage(context, next){\n\n        debugger;\n\n        const path = capitalize(context.path === '/' ? 'home' : context.path)\n        debugger;\n        const nextPage = routes[path] || routes.NotFound;\n\n        debugger;\n\n        currentPage = nextPage;\n    }\n\n    function capitalize(str){\n        return str.charAt(0).toUpperCase() + str.slice(1);\n    }\n\n    page.start();\n</script>\n\n<div class=\"app-container\">\n\t<header>\n\t\ti am the header\n\t</header>\n\n    {#each Object.keys(routes) as routeName}\n        <button on:click={() => page(routeName)}>{`go to ${routeName}`}</button>\n    {/each}\n\n\t<main>\n        <svelte:component this={currentPage} params={params} />\n    </main>\n</div>\n\n<style lang=\"scss\">.app-container {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  background-color: #123;\n  padding-left: 10%;\n}\n.app-container header {\n  background-color: red;\n  flex: 1;\n}\n.app-container main {\n  background-color: teal;\n  flex: 5;\n}\n\n/*# sourceMappingURL=App.svelte.css.map */</style>",
-    "<script>\n    console.log('about page');\n</script>\n\n<style lang=\"scss\">h1 {\n  color: green;\n}\n\n/*# sourceMappingURL=about.svelte.css.map */</style>\n\n<h1>i am about page</h1>",
-    "<script>\n    console.log('contact page');\n</script>\n\n<style lang=\"scss\">h1 {\n  color: red;\n}\n\n/*# sourceMappingURL=contact.svelte.css.map */</style>\n\n<h1>i am contact page</h1>",
-    "<script>\n    console.log('i am home');\n</script>\n\n<style lang=\"scss\">h1 {\n  color: dodgerblue;\n}\n\n/*# sourceMappingURL=home.svelte.css.map */</style>\n\n<h1>hi i am home</h1>",
-    "<script>\n    console.log('404 page');\n</script>\n\n<h1>this is 404</h1>\n\n<style lang=\"scss\">h1 {\n  color: purple;\n}\n\n/*# sourceMappingURL=notFound.svelte.css.map */</style>"
+    "<script>\n\texport let name;\n</script>\n\n<style>\n\tspan {\n\t\tcolor: green;\n\t}\n\n\t.red {\n\t\tcolor: red;\n\t}\n</style>\n\n<h1>hello i am <span class=\"red\">page</span> with <span>{name}</span></h1>"
   ],
   "names": [],
-  "mappings": "AA6DmB,cAAc,4BAAC,CAAC,AACjC,MAAM,CAAE,IAAI,CACZ,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,MAAM,CACtB,gBAAgB,CAAE,IAAI,CACtB,YAAY,CAAE,GAAG,AACnB,CAAC,AACD,4BAAc,CAAC,MAAM,cAAC,CAAC,AACrB,gBAAgB,CAAE,GAAG,CACrB,IAAI,CAAE,CAAC,AACT,CAAC,AACD,4BAAc,CAAC,IAAI,cAAC,CAAC,AACnB,gBAAgB,CAAE,IAAI,CACtB,IAAI,CAAE,CAAC,AACT,CAAC;ACvEkB,EAAE,eAAC,CAAC,AACrB,KAAK,CAAE,KAAK,AACd,CAAC;ACFkB,EAAE,cAAC,CAAC,AACrB,KAAK,CAAE,GAAG,AACZ,CAAC;ACFkB,EAAE,cAAC,CAAC,AACrB,KAAK,CAAE,UAAU,AACnB,CAAC;ACAkB,EAAE,cAAC,CAAC,AACrB,KAAK,CAAE,MAAM,AACf,CAAC"
+  "mappings": "AAKC,IAAI,cAAC,CAAC,AACL,KAAK,CAAE,KAAK,AACb,CAAC,AAED,IAAI,cAAC,CAAC,AACL,KAAK,CAAE,GAAG,AACX,CAAC"
 }
