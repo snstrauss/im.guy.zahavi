@@ -4,8 +4,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public",
-    "deploy": "gh-pages -d public",
+    "start": "sirv public --single",
+    "deploy": "gh-pages -d public -b master",
     "clean": "rm -rf public/build"
   },
   "devDependencies": {
@@ -16,7 +16,9 @@
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0"
+    "sass": "^1.26.5",
+    "svelte": "^3.0.0",
+    "svelte-preprocess": "^3.7.4"
   },
   "dependencies": {
     "sirv-cli": "^0.4.4"
