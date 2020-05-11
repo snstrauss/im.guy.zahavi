@@ -4,18 +4,17 @@
   "scripts": {
     "start": "sirv public --single",
     "clean": "rm -rf public/build",
+    "rollup-build": "rollup -c",
 
-    "prebuild": "echo '1. clean' && npm run clean",
-    "build": "echo '2. build' && rollup -c",
-    "postbuild": "echo '3. push sources' && git push origin sources",
+    "sources": "git push origin sources",
+    "postsources": "git checkout master",
+    "prepages": "npm run clean && npm run rollup-build",
+    "pages": "git add -A && gh-pages -d public -b master",
+    "postpages": "npm run clean && git checkout sources",
 
-    "preghPages": "echo '4. checkout master' && git checkout master",
-    "ghPages": "echo '5. deploy gh-pages' && gh-pages -d public -b master",
-    "postghPages": "echo '6. checkout sources' && git checkout sources",
+    "deploy": "npm run sources && npm run pages",
 
-    "dev": "rollup -c -w",
-
-    "deploy": "npm run build && npm run ghPages"
+    "dev": "rollup -c -w"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "11.0.2",
