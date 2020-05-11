@@ -2,11 +2,20 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
     "start": "sirv public --single",
-    "deploy": "gh-pages -d public -b master",
-    "clean": "rm -rf public/build"
+    "clean": "rm -rf public/build",
+
+    "prebuild": "echo '1. clean' && npm run clean",
+    "build": "echo '2. build' && rollup -c",
+    "postbuild": "echo '3. push sources' && git push origin sources",
+
+    "preghPages": "echo '4. checkout master' && git checkout master",
+    "ghPages": "echo '5. deploy gh-pages' && gh-pages -d public -b master",
+    "postghPages": "echo '6. checkout sources' && git checkout sources",
+
+    "dev": "rollup -c -w",
+
+    "deploy": "npm run build && npm run ghPages"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "11.0.2",
