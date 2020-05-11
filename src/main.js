@@ -3,7 +3,7 @@ import App from './App.svelte';
 const app = new App({
 	target: document.body,
 	props: {
-		name: 'change 6!!!'
+		name: 'luck no.7 ??'
 	}
 });
 
