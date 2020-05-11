@@ -6,7 +6,7 @@
     "clean": "rm -rf public/build",
     "rollup-build": "rollup -c",
 
-    "commit-pages": "git add -A && git commit 'adding built sources'",
+    "commit-pages": "git add -A && git commit -m 'adding built sources'",
     "deploy-pages": "gh-pages -d public -b master",
 
     "sources": "git push origin sources",
