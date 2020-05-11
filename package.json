@@ -10,7 +10,7 @@
     "deploy-pages": "gh-pages -d public -b master",
 
     "sources": "git push origin sources",
-    "postsources": "git checkout master",
+    "postsources": "git checkout master && git merge sources",
     "prepages": "npm run clean && npm run rollup-build",
     "pages": "npm run commit-pages && npm run deploy-pages",
     "postpages": "git checkout sources",
