@@ -19,7 +19,7 @@
         }
 
         main {
-            border: 4px solid dodgerblue;
+            border: 4px solid salmon;
         }
 
         footer {

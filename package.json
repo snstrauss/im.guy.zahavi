@@ -5,7 +5,7 @@
     "branchName": "sources"
   },
   "scripts": {
-    "rollup-build": "rollup -c",
+    "rollup-build": "routify -b && rollup -c",
     "commit-pages": "git add -A && git commit -m 'adding built sources'",
     "deploy-pages": "gh-pages -d public -b master",
     "presources": "npm config set snstrauss.github.io:branchName $(git rev-parse --symbolic-full-name --abbrev-ref HEAD)",
