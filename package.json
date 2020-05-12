@@ -1,0 +1,39 @@
+{
+  "name": "snstrauss.github.io",
+  "version": "1.0.0",
+  "config": {
+    "branchName": "sources"
+  },
+  "scripts": {
+    "rollup-build": "rollup -c",
+    "commit-pages": "git add -A && git commit -m 'adding built sources'",
+    "deploy-pages": "gh-pages -d public -b master",
+    "presources": "npm config set snstrauss.github.io:branchName $(git rev-parse --symbolic-full-name --abbrev-ref HEAD)",
+    "sources": "git push -u origin $npm_package_config_branchName",
+    "postsources": "git checkout master && git merge $npm_package_config_branchName -m 'merge branch to master'",
+    "prepages": "npm run clean && npm run rollup-build",
+    "pages": "npm run commit-pages && npm run deploy-pages",
+    "postpages": "git checkout $npm_package_config_branchName",
+    "deploy": "npm run sources && npm run pages",
+    "dev": "routify -c dev-server",
+    "dev-server": "rollup -c -w",
+    "start": "sirv public --single",
+    "clean": "rm -rf public/build"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "11.0.2",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@sveltech/routify": "^1.7.8",
+    "gh-pages": "^2.2.0",
+    "rollup": "^1.20.0",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^5.1.2",
+    "sass": "^1.26.5",
+    "svelte": "^3.0.0",
+    "svelte-preprocess": "^3.7.4"
+  },
+  "dependencies": {
+    "sirv-cli": "^0.4.4"
+  }
+}
