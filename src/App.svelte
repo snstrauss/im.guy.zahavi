@@ -6,6 +6,18 @@
 	console.log(sessionStorage);
 	debugger;
 
+	(function redirectIfNeeded(){
+		console.log('redirect if needed!');
+		debugger;
+
+		const redirect = sessionStorage.redirect;
+		delete sessionStorage.redirect;
+		if (redirect && redirect !== location.href) {
+			console.log('history replace state!');
+			history.replaceState(null, null, redirect);
+		}
+	})()
+
 </script>
 
 <style lang="scss">
