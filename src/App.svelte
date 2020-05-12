@@ -1,6 +1,11 @@
 <script>
 	import { Router } from "@sveltech/routify";
 	import { routes } from "@sveltech/routify/tmp/routes";
+
+	console.log('sessionStorage: ');
+	console.log(sessionStorage);
+	debugger;
+
 </script>
 
 <style lang="scss">
