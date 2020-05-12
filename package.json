@@ -14,7 +14,7 @@
     "postsources": "git checkout master && git merge $npm_package_config_branchName -m 'merge branch to master'",
     "prepages": "npm run clean && npm run rollup-build",
     "pages": "npm run commit-pages && npm run deploy-pages",
-    "postpages": "git checkout sources",
+    "postpages": "git checkout $npm_package_config_branchName",
 
     "deploy": "npm run sources && npm run pages",
 

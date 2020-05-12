@@ -19,7 +19,7 @@
         }
 
         main {
-            border: 4px solid deeppink;
+            border: 4px solid seagreen;
         }
 
         footer {
@@ -37,6 +37,7 @@
         </nav>
     </header>
     <main>
+        page: <br>
         <slot></slot>
     </main>
     <footer>
