@@ -1,15 +1,16 @@
 <script>
-	export let name;
+	import { Router } from "@sveltech/routify";
+	import { routes } from "@sveltech/routify/tmp/routes";
 </script>
 
-<style>
-	span {
-		color: green;
-	}
-
-	.red {
-		color: red;
+<style lang="scss">
+	.app-container {
+		border: 1px solid red;
 	}
 </style>
 
-<h1>hello i am <span class="red">page</span> with <span>{name}</span></h1>
+<div class="app-container">
+	i am app. <br>
+	router: <br>
+	<Router {routes}/>
+</div>
