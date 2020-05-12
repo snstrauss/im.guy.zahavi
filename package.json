@@ -10,7 +10,7 @@
     "deploy-pages": "gh-pages -d public -b master",
 
     "presources": "npm config set snstrauss.github.io:branchName $(git rev-parse --symbolic-full-name --abbrev-ref HEAD)",
-    "sources": "git push origin $npm_package_config_branchName",
+    "sources": "git push -u origin $npm_package_config_branchName",
     "postsources": "git checkout master && git merge $npm_package_config_branchName -m 'merge branch to master'",
     "prepages": "npm run clean && npm run rollup-build",
     "pages": "npm run commit-pages && npm run deploy-pages",
