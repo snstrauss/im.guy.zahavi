@@ -1,13 +1,15 @@
 <script>
-    import { goto } from '@sveltech/routify';
+    import { goto, layout } from '@sveltech/routify';
 
-    console.log('layout');
-
-    let navLinks = {
-        "home": '/',
-        "about": "about",
-        "contact": "contact"
+    const titleTranslations = {
+        "im.guy.zahavi": "<home/>"
     };
+
+    const navLinks = $layout.children.map(({ title, path }) => ({
+        title: titleTranslations[title] ? titleTranslations[title] : title,
+        path
+    }));
+
 </script>
 
 <style lang="scss">
@@ -28,11 +30,12 @@
     }
 </style>
 
+
 <main class="main-container">
     <header>
         <nav>
-            {#each Object.entries(navLinks) as [title, route]}
-                <button on:click={() => $goto(route)}>{title}</button>
+            {#each navLinks as { title, path}}
+                <button on:click={$goto(path)}>{title}</button>
             {/each}
         </nav>
     </header>
