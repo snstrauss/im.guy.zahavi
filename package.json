@@ -7,7 +7,7 @@
   "scripts": {
     "rollup-build": "routify -b && rollup -c",
     "commit-pages": "git add -A && git commit -m 'adding built sources'",
-    "deploy-pages": "gh-pages -d public -b master",
+    "deploy-pages": "gh-pages -d public",
     "presources": "npm config set snstrauss.github.io:branchName $(git rev-parse --symbolic-full-name --abbrev-ref HEAD)",
     "sources": "git push -u origin $npm_package_config_branchName",
     "postsources": "git checkout master && git merge $npm_package_config_branchName -m 'merge branch to master'",
