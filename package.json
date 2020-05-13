@@ -2,15 +2,18 @@
   "name": "snstrauss.github.io",
   "version": "1.0.0",
   "scripts": {
-    "clean": "rm -rf public/build",
-
-    "serve": "sirv public --single",
+    "clean": "rm -rf build",
+    "serve": "sirv build --single",
     "dev-server": "rollup -c -w",
+
+    "predev": "npm run clean",
     "dev": "routify -c dev-server",
 
     "prebuild": "npm run clean",
     "build": "routify -b && rollup -c",
-    "deploy-to-gh-pages": "gh-pages -d public",
+    "postbuild": "node postbuild.js",
+
+    "deploy-to-gh-pages": "gh-pages -d build",
 
     "predeploy": "npm run build",
     "deploy": "npm run deploy-to-gh-pages"
@@ -20,7 +23,10 @@
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@sveltech/routify": "^1.7.8",
     "gh-pages": "^2.2.0",
+    "posthtml": "^0.13.0",
+    "posthtml-hash": "^1.0.0",
     "rollup": "^1.20.0",
+    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",

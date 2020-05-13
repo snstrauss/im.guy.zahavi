@@ -14,7 +14,7 @@
 
 <style lang="scss">
 	.app-container {
-		border: 1px solid red;
+		border: 4px solid green;
 	}
 </style>
 
