@@ -21,7 +21,7 @@
         }
 
         main {
-            border: 4px solid darkmagenta;
+            border: 4px solid royalblue;
         }
 
         footer {
