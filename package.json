@@ -1,24 +1,19 @@
 {
   "name": "snstrauss.github.io",
   "version": "1.0.0",
-  "config": {
-    "branchName": "sources"
-  },
   "scripts": {
-    "rollup-build": "routify -b && rollup -c",
-    "commit-pages": "git add -A && git commit -m 'adding built sources'",
-    "deploy-pages": "gh-pages -d public",
-    "presources": "npm config set snstrauss.github.io:branchName $(git rev-parse --symbolic-full-name --abbrev-ref HEAD)",
-    "sources": "git push -u origin $npm_package_config_branchName",
-    "postsources": "git checkout master && git merge $npm_package_config_branchName -m 'merge branch to master'",
-    "prepages": "npm run clean && npm run rollup-build",
-    "pages": "npm run commit-pages && npm run deploy-pages",
-    "postpages": "git checkout $npm_package_config_branchName",
-    "deploy": "npm run sources && npm run pages",
-    "dev": "routify -c dev-server",
+    "clean": "rm -rf public/build",
+
+    "serve": "sirv public --single",
     "dev-server": "rollup -c -w",
-    "start": "sirv public --single",
-    "clean": "rm -rf public/build"
+    "dev": "routify -c dev-server",
+
+    "prebuild": "clean",
+    "build": "routify -b && rollup -c",
+    "deploy-to-gh-pages": "gh-pages -d public",
+
+    "predeploy": "build",
+    "deploy": "deploy-to-gh-pages"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "11.0.2",
