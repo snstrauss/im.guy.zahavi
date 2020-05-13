@@ -8,12 +8,12 @@
     "dev-server": "rollup -c -w",
     "dev": "routify -c dev-server",
 
-    "prebuild": "clean",
+    "prebuild": "npm run clean",
     "build": "routify -b && rollup -c",
     "deploy-to-gh-pages": "gh-pages -d public",
 
-    "predeploy": "build",
-    "deploy": "deploy-to-gh-pages"
+    "predeploy": "npm run build",
+    "deploy": "npm run deploy-to-gh-pages"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "11.0.2",
