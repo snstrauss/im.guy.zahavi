@@ -21,7 +21,7 @@
         }
 
         main {
-            border: 4px solid salmon;
+            border: 4px solid darkmagenta;
         }
 
         footer {
