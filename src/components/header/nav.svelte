@@ -2,7 +2,7 @@
     import { goto, layout } from '@sveltech/routify';
 
     const titleTranslations = {
-        "im.guy.zahavi": "<home/>"
+        "im.guy.zahavi": "Guy"
     };
 
     const navLinks = $layout.children.map(({ title, path }) => ({
@@ -31,6 +31,6 @@
 
 <nav class="nav-links">
     {#each navLinks as { title, path}}
-        <button on:click={$goto(path)}>{title}</button>
+        <button on:click={$goto(path)}>&lt;{title} /&gt;</button>
     {/each}
 </nav>
