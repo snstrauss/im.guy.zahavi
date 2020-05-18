@@ -2,6 +2,17 @@ html, body {
 	position: relative;
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
+
+	background: linear-gradient(
+		136deg,
+		#d4c762,
+		#4cc1b5,
+		#4398dd,
+		#f37e80
+	);
+
+	background-size: 1200% 1200%;
 }
 
 body {
