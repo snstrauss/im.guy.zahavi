@@ -1,16 +1,6 @@
 <script>
-    import { goto, layout } from '@sveltech/routify';
     import Stars from '../../components/stars.svelte';
-
-    const titleTranslations = {
-        "im.guy.zahavi": "<home/>"
-    };
-
-    const navLinks = $layout.children.map(({ title, path }) => ({
-        title: titleTranslations[title] ? titleTranslations[title] : title,
-        path
-    }));
-
+    import Header from '../../components/header.svelte';
 </script>
 
 <style lang="scss">
@@ -36,10 +26,6 @@
 
         overflow: hidden;
 
-        header {
-            border: 1px solid green;
-        }
-
         main {
             border: 4px solid royalblue;
         }
@@ -53,13 +39,7 @@
 
 <main class="main-container">
     <Stars></Stars>
-    <header>
-        <nav>
-            {#each navLinks as { title, path}}
-                <button on:click={$goto(path)}>{title}</button>
-            {/each}
-        </nav>
-    </header>
+    <Header/>
     <main>
         did i ruin everything?: <br>
         <slot></slot>
