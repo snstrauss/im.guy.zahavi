@@ -1,6 +1,11 @@
 <script>
     import Stars from '../../components/stars.svelte';
-    import Header from '../../components/header.svelte';
+    import Header from '../../components/header/header.svelte';
+
+    const { isProd } = process.env;
+    console.log('is prod:');
+    console.log(process.env);
+
 </script>
 
 <style lang="scss">
@@ -38,7 +43,9 @@
 
 
 <main class="main-container">
-    <Stars></Stars>
+    {#if isProd}
+        <Stars></Stars>
+    {/if}
     <Header/>
     <main>
         did i ruin everything?: <br>
