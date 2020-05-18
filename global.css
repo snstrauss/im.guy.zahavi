@@ -4,7 +4,15 @@ html, body {
 	height: 100%;
 	overflow: hidden;
 
-	background: blue;
+	background: linear-gradient(
+		136deg,
+		#d4c762,
+		#4cc1b5,
+		#4398dd,
+		#f37e80
+	);
+
+	background-size: 1200% 1200%;
 }
 
 body {
