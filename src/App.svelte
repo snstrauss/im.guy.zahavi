@@ -9,17 +9,6 @@
 			history.replaceState(null, null, redirect);
 		}
 	})()
-
 </script>
 
-<style lang="scss">
-	.app-container {
-		border: 4px solid green;
-	}
-</style>
-
-<div class="app-container">
-	i am app last try?. <br>
-	router: <br>
-	<Router {routes}/>
-</div>
+<Router {routes}/>
