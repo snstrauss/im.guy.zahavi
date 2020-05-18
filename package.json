@@ -21,6 +21,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "@rollup/plugin-replace": "^2.3.2",
     "@sveltech/routify": "^1.7.8",
     "gh-pages": "^2.2.0",
     "posthtml": "^0.13.0",

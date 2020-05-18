@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import { scss } from 'svelte-preprocess';
 import copy from 'rollup-plugin-copy';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -39,6 +40,14 @@ export default {
 			css: css => {
 				css.write('build/bundle.[hash].css', !production);
 			}
+		}),
+
+		replace({
+			process: JSON.stringify({
+				env: {
+					isProd: production
+				}
+			})
 		}),
 
 		// If you have external dependencies installed from
