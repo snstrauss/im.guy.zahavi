@@ -1,5 +1,6 @@
 <script>
     import { goto, layout } from '@sveltech/routify';
+    import Stars from '../../components/stars.svelte';
 
     const titleTranslations = {
         "im.guy.zahavi": "<home/>"
@@ -14,7 +15,26 @@
 
 <style lang="scss">
     .main-container {
-        border: 1px solid blue;
+        height: 100%;
+
+        background: inherit;
+        background-size: inherit;
+
+        animation: gradient-slide 100s ease infinite;
+
+        @keyframes gradient-slide {
+            0% {
+                background-position: 0% 7%;
+            }
+            50% {
+                background-position: 100% 94%;
+            }
+            100% {
+                background-position: 0% 7%;
+            }
+        }
+
+        overflow: hidden;
 
         header {
             border: 1px solid green;
@@ -32,6 +52,7 @@
 
 
 <main class="main-container">
+    <Stars></Stars>
     <header>
         <nav>
             {#each navLinks as { title, path}}
