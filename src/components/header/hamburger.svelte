@@ -6,8 +6,9 @@
 <style lang="scss">
     .hamburger {
         position: absolute;
-        top: 1vw;
-        left: 1vw;
+        --distance: calc(var(--header-height) / 3.5);
+        top: var(--distance);
+        left: var(--distance);
 
         input {
             position: absolute;
@@ -41,7 +42,7 @@
             span {
                 --direction: 1;
                 --scale: 1;
-                --translation: 0.9vw;
+                --translation: 0.28em;
 
                 opacity: 1;
                 transform: translateY(calc(var(--direction) * calc(var(--translation) * 2)))
