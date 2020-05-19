@@ -3,6 +3,8 @@
 
     export let onSide = false;
 
+    export let itemClicked;
+
     const titleTranslations = {
         "im.guy.zahavi": "Guy"
     };
@@ -11,6 +13,11 @@
         title: titleTranslations[title] ? titleTranslations[title] : title,
         path
     }));
+
+    function clicked(path){
+         $goto(path);
+         itemClicked();
+    }
 </script>
 
 <style lang="scss">
@@ -50,6 +57,6 @@
 
 <div class="links-container" class:onSide>
     {#each navLinks as { title, path}}
-        <button class="nav-link" class:active={$isActive(path)} on:click={$goto(path)}>&lt;{title} /&gt;</button>
+        <button class="nav-link" class:active={$isActive(path)} on:click={() => clicked(path)}>&lt;{title} /&gt;</button>
     {/each}
 </div>
