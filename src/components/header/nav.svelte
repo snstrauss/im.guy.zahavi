@@ -1,9 +1,14 @@
 <script>
     import Hamburger from './hamburger.svelte';
     import NavLinks from './nav-links.svelte';
+    import clickOutside from '../../custom-actions/clickOutside.js';
 
     export let onSide = false;
     let open = false;
+
+    function closeMenu(){
+        open = false;
+    }
 </script>
 
 <style lang="scss">
@@ -33,33 +38,35 @@
                 width: 40vw;
                 height: 100%;
 
-                background: linear-gradient(
-                                to right,
-                                hsl(0, 0%, 100%) 0%,
-                                hsla(0, 0%, 100%, 0.996) 15.4%,
-                                hsla(0, 0%, 100%, 0.982) 29.2%,
-                                hsla(0, 0%, 100%, 0.96) 41.5%,
-                                hsla(0, 0%, 100%, 0.929) 52.4%,
-                                hsla(0, 0%, 100%, 0.89) 61.9%,
-                                hsla(0, 0%, 100%, 0.841) 70.2%,
-                                hsla(0, 0%, 100%, 0.783) 77.3%,
-                                hsla(0, 0%, 100%, 0.717) 83.2%,
-                                hsla(0, 0%, 100%, 0.641) 88.1%,
-                                hsla(0, 0%, 100%, 0.557) 92.1%,
-                                hsla(0, 0%, 100%, 0.464) 95.1%,
-                                hsla(0, 0%, 100%, 0.361) 97.4%,
-                                hsla(0, 0%, 100%, 0.25) 98.9%,
-                                hsla(0, 0%, 100%, 0.129) 99.7%,
-                                hsla(0, 0%, 100%, 0) 100%
-                            );
+                // background: linear-gradient(
+                //                 to right,
+                //                 hsl(0, 0%, 100%) 0%,
+                //                 hsla(0, 0%, 100%, 0.996) 15.4%,
+                //                 hsla(0, 0%, 100%, 0.982) 29.2%,
+                //                 hsla(0, 0%, 100%, 0.96) 41.5%,
+                //                 hsla(0, 0%, 100%, 0.929) 52.4%,
+                //                 hsla(0, 0%, 100%, 0.89) 61.9%,
+                //                 hsla(0, 0%, 100%, 0.841) 70.2%,
+                //                 hsla(0, 0%, 100%, 0.783) 77.3%,
+                //                 hsla(0, 0%, 100%, 0.717) 83.2%,
+                //                 hsla(0, 0%, 100%, 0.641) 88.1%,
+                //                 hsla(0, 0%, 100%, 0.557) 92.1%,
+                //                 hsla(0, 0%, 100%, 0.464) 95.1%,
+                //                 hsla(0, 0%, 100%, 0.361) 97.4%,
+                //                 hsla(0, 0%, 100%, 0.25) 98.9%,
+                //                 hsla(0, 0%, 100%, 0.129) 99.7%,
+                //                 hsla(0, 0%, 100%, 0) 100%
+                //             );
+
+                background: white;
             }
         }
     }
 </style>
 
 <section class="nav-menu" class:onSide>
-    <nav class="slide-menu" class:open>
-        <NavLinks {onSide} />
+    <nav class="slide-menu" class:open use:clickOutside on:click_outside={closeMenu}>
+        <NavLinks {onSide} itemClicked={closeMenu} />
     </nav>
     {#if onSide}
         <Hamburger bind:checked={open}/>
