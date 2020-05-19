@@ -1,18 +1,10 @@
 <script>
-    import { goto, layout } from '@sveltech/routify';
     import Hamburger from './hamburger.svelte';
+    import NavLinks from './nav-links.svelte';
 
     export let onSide = false;
     let open = false;
 
-    const titleTranslations = {
-        "im.guy.zahavi": "Guy"
-    };
-
-    const navLinks = $layout.children.map(({ title, path }) => ({
-        title: titleTranslations[title] ? titleTranslations[title] : title,
-        path
-    }));
 </script>
 
 <style lang="scss">
@@ -22,19 +14,6 @@
 
             display: flex;
             align-items: flex-start;
-
-            button {
-                margin: 0;
-                background: none;
-                border: none;
-                outline: none;
-
-                color: rgba(0, 0, 0, 0.5);
-                transition: color 0.2s;
-                &:hover {
-                    color: rgba(0, 0, 0, 1);
-                }
-            }
         }
 
         &.onSide {
@@ -54,15 +33,6 @@
                 position: absolute;
                 width: 40vw;
                 height: 100%;
-
-                .links-container {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-
-                    position: absolute;
-                    top: var(--header-height);
-                }
 
                 background: linear-gradient(
                                 to right,
@@ -90,11 +60,7 @@
 
 <section class="nav-menu" class:onSide>
     <nav class="slide-menu" class:open>
-        <div class="links-container">
-            {#each navLinks as { title, path}}
-                <button on:click={$goto(path)}>&lt;{title} /&gt;</button>
-            {/each}
-        </div>
+        <NavLinks />
     </nav>
     {#if onSide}
         <Hamburger bind:checked={open}/>
