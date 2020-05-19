@@ -1,3 +1,10 @@
+:root {
+	--header-height: 8vh;
+	--transition-time: 0.5s;
+	--transition-easing: cubic-bezier(0.77,0.2,0.05,1.0);
+
+	--transition-params: var(--transition-time) var(--transition-easing);
+}
 html, body {
 	position: relative;
 	width: 100%;
