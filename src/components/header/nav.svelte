@@ -4,7 +4,6 @@
 
     export let onSide = false;
     let open = false;
-
 </script>
 
 <style lang="scss">
@@ -60,7 +59,7 @@
 
 <section class="nav-menu" class:onSide>
     <nav class="slide-menu" class:open>
-        <NavLinks />
+        <NavLinks {onSide} />
     </nav>
     {#if onSide}
         <Hamburger bind:checked={open}/>
