@@ -1,6 +1,8 @@
 <script>
     import { layout, goto, isActive } from '@sveltech/routify';
 
+    export let onSide = false;
+
     const titleTranslations = {
         "im.guy.zahavi": "Guy"
     };
@@ -14,11 +16,8 @@
 <style lang="scss">
     .links-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
-
-        position: absolute;
-        top: var(--header-height);
 
         .nav-link {
             margin: 0;
@@ -26,16 +25,30 @@
             border: none;
             outline: none;
 
-            color: rgba(0, 0, 0, 0.5);
             transition: color 0.2s;
-            &:hover, &.active {
-                color: rgba(0, 0, 0, 1);
+            --intensity: 0.4;
+            font-weight: 100;
+
+            color: rgba(0, 0, 0, var(--intensity));
+            &.active {
+                --intensity: 1;
+                font-weight: 400;
             }
+
+            &:hover:not(.active) {
+                --intensity: 0.75;
+            }
+        }
+
+        &.onSide {
+            flex-direction: column;
+            position: absolute;
+            top: var(--header-height);
         }
     }
 </style>
 
-<div class="links-container">
+<div class="links-container" class:onSide>
     {#each navLinks as { title, path}}
         <button class="nav-link" class:active={$isActive(path)} on:click={$goto(path)}>&lt;{title} /&gt;</button>
     {/each}
