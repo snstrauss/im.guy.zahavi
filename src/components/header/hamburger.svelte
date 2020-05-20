@@ -44,6 +44,8 @@
                 --scale: 1;
                 --translation: 0.28em;
 
+                background-color: var(--nav-link-grey);
+
                 opacity: 1;
                 transform: translateY(calc(var(--direction) * calc(var(--translation) * 2)))
                            translateX(calc(var(--translation) * -1))
