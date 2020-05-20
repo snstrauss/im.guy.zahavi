@@ -26,9 +26,27 @@
         flex-direction: row;
         align-items: flex-start;
 
+        &.onSide {
+            flex-direction: column;
+            position: absolute;
+            top: var(--header-height);
+
+            .nav-link {
+                color: var(--nav-link-grey);
+
+                &:not(.animated-gradient){
+                    background: none;
+                }
+
+                &.active {
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+        }
+
         .nav-link {
             margin: 0;
-            background: none;
             border: none;
             outline: none;
 
@@ -37,26 +55,21 @@
             font-weight: 100;
 
             color: rgba(0, 0, 0, var(--intensity));
+
             &.active {
                 --intensity: 1;
-                font-weight: 400;
+                font-weight: 700;
             }
 
             &:hover:not(.active) {
                 --intensity: 0.75;
             }
         }
-
-        &.onSide {
-            flex-direction: column;
-            position: absolute;
-            top: var(--header-height);
-        }
     }
 </style>
 
 <div class="links-container" class:onSide>
     {#each navLinks as { title, path}}
-        <button class="nav-link" class:active={$isActive(path)} on:click={() => clicked(path)}>&lt;{title} /&gt;</button>
+        <button class="nav-link" class:animated-gradient={$isActive(path)} class:active={$isActive(path)} on:click={() => clicked(path)}>&lt;{title} /&gt;</button>
     {/each}
 </div>
