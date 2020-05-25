@@ -45,6 +45,7 @@
             }
 
             &.active {
+                background-clip: text;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
