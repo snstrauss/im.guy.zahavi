@@ -4,7 +4,7 @@
 
     let viewWidth;
     let isBigScreen;
-    $: isBigScreen = (viewWidth > 600);
+    $: isBigScreen = viewWidth && (viewWidth > 600);
 </script>
 
 <svelte:window bind:innerWidth={viewWidth} />
@@ -25,7 +25,9 @@
 </style>
 
 <header class="header" class:singleElement={!isBigScreen}>
-    <Nav onSide={!isBigScreen} />
+    {#if (isBigScreen !== undefined)}
+        <Nav onSide={!isBigScreen} />
+    {/if}
     <Socials />
 </header>
 
