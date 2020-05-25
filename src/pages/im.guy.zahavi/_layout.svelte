@@ -3,9 +3,6 @@
     import Header from '../../components/header/header.svelte';
 
     const { isProd } = process.env;
-    console.log('is prod:');
-    console.log(process.env);
-
 </script>
 
 <style lang="scss">
