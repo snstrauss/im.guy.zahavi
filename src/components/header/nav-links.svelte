@@ -1,5 +1,6 @@
 <script>
-    import { layout, goto, isActive } from '@sveltech/routify';
+	import NavLink from "./nav-link.svelte";
+    import { layout, goto } from '@sveltech/routify';
 
     export let onSide = false;
 
@@ -30,46 +31,12 @@
             flex-direction: column;
             position: absolute;
             top: var(--header-height);
-
-            .nav-link {
-                color: var(--nav-link-grey);
-
-                &:not(.animated-gradient){
-                    background: none;
-                }
-
-                &.active {
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-            }
-        }
-
-        .nav-link {
-            margin: 0;
-            border: none;
-            outline: none;
-
-            transition: color 0.2s;
-            --intensity: 0.4;
-            font-weight: 100;
-
-            color: rgba(0, 0, 0, var(--intensity));
-
-            &.active {
-                --intensity: 1;
-                font-weight: 700;
-            }
-
-            &:hover:not(.active) {
-                --intensity: 0.75;
-            }
         }
     }
 </style>
 
 <div class="links-container" class:onSide>
     {#each navLinks as { title, path}}
-        <button class="nav-link" class:animated-gradient={$isActive(path)} class:active={$isActive(path)} on:click={() => clicked(path)}>&lt;{title} /&gt;</button>
+        <NavLink {onSide} {path} {clicked}>&lt;{title} /&gt;</NavLink>
     {/each}
 </div>
