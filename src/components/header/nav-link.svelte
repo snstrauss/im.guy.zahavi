@@ -4,10 +4,6 @@
     export let path = '';
     export let onSide = false;
     export let clicked;
-
-    let shouldAddGradient;
-    $: shouldAddGradient = onSide && $isActive(path);
-
 </script>
 
 <style lang="scss">
@@ -45,15 +41,13 @@
             }
 
             &.active {
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+                color: whitesmoke;
             }
         }
     }
 </style>
 
-<button class="nav-link" class:onSide class:animated-gradient={shouldAddGradient} class:active={$isActive(path)}
+<button class="nav-link" class:onSide class:active={$isActive(path)}
         on:click={() => clicked(path)}>
     <slot/>
 </button>
