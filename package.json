@@ -5,16 +5,12 @@
     "clean": "rm -rf build",
     "serve": "sirv build --single",
     "dev-server": "rollup -c -w",
-
     "predev": "npm run clean",
     "dev": "routify -c dev-server",
-
     "prebuild": "npm run clean",
     "build": "routify -b && rollup -c",
     "postbuild": "node postbuild.js",
-
     "deploy-to-gh-pages": "gh-pages -d build",
-
     "predeploy": "npm run build",
     "deploy": "npm run deploy-to-gh-pages"
   },
@@ -36,6 +32,7 @@
     "svelte-preprocess": "^3.7.4"
   },
   "dependencies": {
+    "animejs": "^3.2.0",
     "sirv-cli": "^0.4.4",
     "svelte-awesome": "^2.3.0"
   }
