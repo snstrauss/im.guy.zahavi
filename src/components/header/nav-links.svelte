@@ -67,6 +67,7 @@
             flex-direction: column;
             position: absolute;
             top: var(--header-height);
+            padding-left: calc(4% + var(--slide-safe-space));
         }
     }
 </style>

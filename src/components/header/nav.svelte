@@ -1,13 +1,29 @@
 <script>
+	import anime from "animejs/lib/anime.es.js";
     import Hamburger from './hamburger.svelte';
     import NavLinks from './nav-links.svelte';
     import clickOutside from '../../custom-actions/clickOutside.js';
+    import { onMount } from 'svelte';
+
+    let slideRef;
+    let slideSafeSpace;
+    onMount(() => {
+        slideSafeSpace = getComputedStyle(slideRef).getPropertyValue('--slide-safe-space');
+    });
 
     export let onSide = false;
     let open = false;
 
     function closeMenu(){
         open = false;
+    }
+
+    $: {
+        anime({
+            targets: slideRef,
+            translateX: `calc(${open ? '0%' : '-100%'} - ${slideSafeSpace})`,
+            duration: 1000
+        });
     }
 </script>
 
@@ -32,15 +48,13 @@
             left: 0;
 
             .slide-menu {
-                transition: transform var(--transition-params);
-                transform: translateX(-100%);
+                --slide-safe-space: 20vw;
 
-                &.open {
-                    transform: translateX(0);
-                }
+                background-clip: unset;
+                -webkit-background-clip: unset;
 
                 position: absolute;
-                width: 40vw;
+                width: calc(40vw + var(--slide-safe-space));
                 height: 100%;
             }
         }
@@ -48,7 +62,7 @@
 </style>
 
 <section class="nav-menu" class:onSide>
-    <nav class="slide-menu" class:open use:clickOutside on:click_outside={closeMenu}>
+    <nav class="slide-menu" use:clickOutside on:click_outside={closeMenu} bind:this={slideRef}>
         <NavLinks {onSide} itemClicked={closeMenu} />
     </nav>
     {#if onSide}
