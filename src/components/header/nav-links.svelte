@@ -1,10 +1,12 @@
 <script>
 	import NavLink from "./nav-link.svelte";
     import { layout, goto } from '@sveltech/routify';
+    import anime from 'animejs/lib/anime.es.js';
 
     export let onSide = false;
-
     export let itemClicked;
+
+    let containerRef;
 
     const titleTranslations = {
         "im.guy.zahavi": "Guy"
@@ -15,9 +17,35 @@
         path
     }));
 
-    function clicked(path){
-         $goto(path);
-         itemClicked();
+    let navSlideParams = `
+        --width: 100%;
+        left: 0px;
+    `;
+    function setNavSlideParams({ width, left }){
+        anime({
+            targets: containerRef,
+            backgroundSize: [
+                {
+                    value: `${width}px`,
+                    duration: 5000
+                }
+            ],
+            backgroundPosition: [
+                {
+                    value: `${left}px`,
+                    duration: 1000
+                }
+            ],
+        });
+    }
+
+    function clicked(path, navSlideParams, preventNavigation){
+        if(!preventNavigation){
+            $goto(path);
+            itemClicked();
+        }
+
+        setNavSlideParams(navSlideParams);
     }
 </script>
 
@@ -27,6 +55,14 @@
         flex-direction: row;
         align-items: flex-start;
 
+        background-image: linear-gradient(90deg, white, white);
+        background-repeat: no-repeat;
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        background-size: 100%;
+        background-position: 0;
+
         &.onSide {
             flex-direction: column;
             position: absolute;
@@ -35,8 +71,10 @@
     }
 </style>
 
-<div class="links-container" class:onSide>
+<div class="links-container" bind:this={containerRef} style={navSlideParams} class:onSide>
     {#each navLinks as { title, path}}
-        <NavLink {onSide} {path} {clicked}>&lt;{title} /&gt;</NavLink>
+        <NavLink {onSide} {path} {clicked}>
+            &lt;{title} /&gt;
+        </NavLink>
     {/each}
 </div>

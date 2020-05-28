@@ -18,6 +18,11 @@
 
             display: flex;
             align-items: flex-start;
+
+            background-color: #464646;
+
+            background-clip: text;
+            -webkit-background-clip: text;
         }
 
         &.onSide {
@@ -37,8 +42,6 @@
                 position: absolute;
                 width: 40vw;
                 height: 100%;
-
-                background-color: #464646;
             }
         }
     }
