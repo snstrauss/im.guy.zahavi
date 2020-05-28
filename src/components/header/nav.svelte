@@ -18,12 +18,26 @@
         open = false;
     }
 
-    $: {
+    function getTranslateValue(open){
+        return `calc(${open ? '0%' : '-100%'} - ${slideSafeSpace})`
+    }
+
+    let isFirstRun = true;
+    $: if(slideRef){
+        // set initial value for when openning the menu for the fiirst time -
+        // prevent "popping" of the element (default initial value is 0%, which is in the viewport)
+        if(isFirstRun){
+            anime.set(slideRef, {
+                translateX: '-120%'
+            });
+        }
+
         anime({
             targets: slideRef,
-            translateX: `calc(${open ? '0%' : '-100%'} - ${slideSafeSpace})`,
+            translateX: getTranslateValue(open),
             duration: 1000
         });
+        isFirstRun = false;
     }
 </script>
 
@@ -48,6 +62,9 @@
             left: 0;
 
             .slide-menu {
+
+                transform: translateX(calc(-100% - var(--slide-safe-space)));
+
                 --slide-safe-space: 20vw;
 
                 background-clip: unset;
