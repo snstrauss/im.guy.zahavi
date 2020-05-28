@@ -23,7 +23,7 @@
     }
 
     let isFirstRun = true;
-    $: if(slideRef){
+    $: if(slideRef && onSide){
         // set initial value for when openning the menu for the fiirst time -
         // prevent "popping" of the element (default initial value is 0%, which is in the viewport)
         if(isFirstRun){
