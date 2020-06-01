@@ -1,3 +1,11 @@
+<script context="module">
+    const titleTranslations = {
+        "im.guy.zahavi": "Guy",
+        "resume": "résumé"
+    };
+
+    const navOrder = ['Guy', 'projects', 'skills', 'résumé', 'about'];
+</script>
 <script>
 	import NavLink from "./nav-link.svelte";
     import { layout, goto } from '@sveltech/routify';
@@ -8,14 +16,13 @@
 
     let containerRef;
 
-    const titleTranslations = {
-        "im.guy.zahavi": "Guy"
-    };
-
     const navLinks = $layout.children.map(({ title, path }) => ({
         title: titleTranslations[title] ? titleTranslations[title] : title,
         path
-    }));
+    }))
+    .sort((a, b) => {
+        return navOrder.indexOf(a.title) - navOrder.indexOf(b.title);
+    });
 
     let navSlideParams = `
         --width: 100%;
