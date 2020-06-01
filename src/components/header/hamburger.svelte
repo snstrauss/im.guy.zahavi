@@ -6,7 +6,7 @@
 <style lang="scss">
     .hamburger {
         position: absolute;
-        --distance: calc(var(--header-height) / 3.5);
+        --distance: calc(var(--header-footer-height) / 3.5);
         top: var(--distance);
         left: var(--distance);
 

@@ -66,7 +66,7 @@
         &.onSide {
             flex-direction: column;
             position: absolute;
-            top: var(--header-height);
+            top: var(--header-footer-height);
             padding-left: calc(4% + var(--slide-safe-space));
         }
     }
