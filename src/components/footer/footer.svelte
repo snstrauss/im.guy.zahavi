@@ -1,41 +1,41 @@
 <script>
-    import Icon from 'svelte-awesome';
-    import { envelopeO } from 'svelte-awesome/icons';
+	import MadeWith from "./madeWith.svelte";
+	import EmailMe from "./emailMe.svelte";
 
     export let isBigScreen;
 </script>
 
 <style lang="scss">
     .footer {
-        border: 3px solid deeppink;
-
         height: var(--header-footer-height);
         display: flex;
         align-items: center;
         justify-content: center;
 
-        a {
-            width: 90%;
+        padding: 0 3%;
+
+        .footer-item {
+            flex: 1;
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-evenly;
 
-            text-transform: uppercase;
-            color: white;
-            letter-spacing: min(0.5vw, 0.3em);
-
-            &:hover {
-                text-decoration-line: none;
+            &.made {
+                justify-content: flex-start;
             }
-        }
 
-        :global(.email-me-icon){
-            color: white;
+            &.email {
+                justify-content: flex-end;
+            }
         }
     }
 </style>
 
 <footer class="footer">
-    <a href="mailto:get.guy.zahavi@gmail.com"><Icon class="email-me-icon" data={envelopeO}/>get.guy.zahavi@gmail.com</a>
+    {#if isBigScreen}
+        <span class="footer-item made">
+            <MadeWith />
+        </span>
+    {/if}
+    <span class="footer-item email">
+        <EmailMe email="get.guy.zahavi@gmail.com" { isBigScreen } />
+    </span>
 </footer>
