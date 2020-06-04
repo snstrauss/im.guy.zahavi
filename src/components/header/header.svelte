@@ -2,12 +2,8 @@
     import Nav from './nav.svelte';
     import Socials from './socials.svelte';
 
-    let viewWidth;
-    let isBigScreen;
-    $: isBigScreen = viewWidth && (viewWidth > 600);
+    export let isBigScreen;
 </script>
-
-<svelte:window bind:innerWidth={viewWidth} />
 
 <style lang="scss">
     header {
@@ -16,7 +12,7 @@
         justify-content: space-between;
         align-items: center;
 
-        height: var(--header-height);
+        height: var(--header-footer-height);
 
         &.singleElement {
             justify-content: flex-end;
