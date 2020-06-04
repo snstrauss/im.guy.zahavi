@@ -1,21 +1,27 @@
 <script>
     import Stars from '../../components/stars.svelte';
+	import Footer from "./../../components/footer/footer.svelte";
     import Header from '../../components/header/header.svelte';
 
     const { isProd } = process.env;
+
+    let viewWidth;
+    let isBigScreen;
+    $: isBigScreen = viewWidth && (viewWidth > 600);
 </script>
+
+<svelte:window bind:innerWidth={viewWidth} />
 
 <style lang="scss">
     .main-container {
         height: 100%;
         overflow: hidden;
 
-        main {
-            border: 4px solid royalblue;
-        }
+        display: flex;
+        flex-direction: column;
 
-        footer {
-            border: 1px solid purple;
+        main {
+            flex: 1;
         }
     }
 
@@ -52,12 +58,10 @@
     {#if isProd}
         <Stars></Stars>
     {/if}
-    <Header/>
+    <Header {isBigScreen} />
     <main>
         did i ruin everything?: <br>
         <slot></slot>
     </main>
-    <footer>
-        i am footer
-    </footer>
+    <Footer {isBigScreen} />
 </main>
