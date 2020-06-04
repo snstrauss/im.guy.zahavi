@@ -1,21 +1,20 @@
 <script>
-    import Icon from 'svelte-awesome';
-    import { linkedinSquare, githubSquare, codepen } from 'svelte-awesome/icons';
+    import Iconify from '../iconify.svelte';
 
     const socials = [
         {
             label: 'LinkedIn',
-            icon: linkedinSquare,
+            icon: 'ant-design:linkedin-outlined',
             url: 'https://www.linkedin.com/in/guy-zahavi/'
         },
         {
             label: 'Github',
-            icon: githubSquare,
+            icon: 'fa-brands:github',
             url: 'https://github.com/snstrauss'
         },
         {
             label: 'CodePen',
-            icon: codepen,
+            icon: 'ant-design:codepen-outlined',
             url: 'https://codepen.io/snstrauss'
         }
     ];
@@ -27,32 +26,28 @@
         display: flex;
         justify-content: space-between;
         margin-right: 5%;
-        max-width: 8em;
+        max-width: 10em;
 
-        a {
+        a.social-icon {
             text-decoration: none;
             position: relative;
-        }
-        :global(.social-icon) {
-            color: white;
-            margin: 0;
-            transition: color 0.7s;
-            &:hover {
-                color: black;
-            }
 
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            color: white;
+            opacity: 0.8;
+
+            transition: opacity 0.2s linear;
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 </style>
 
 <section class="socials">
     {#each socials as {label, icon, url}}
-        <a href={url} target="_">
-            <Icon class="social-icon alert" data={icon} scale="2" label={label}/>
+        <a href={url} target="_" class="social-icon">
+            <Iconify  height="30" icon={icon}/>
         </a>
     {/each}
 </section>
